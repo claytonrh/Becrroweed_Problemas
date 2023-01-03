@@ -1,204 +1,324 @@
-DESAFIO 2602:
- 
+----------- GERAL PADRÃO FIREBRD
+
 DESAFIO 2604:
-	SELECT id, name FROM products WHERE price < 10 OR price > 100
+SELECT id, name FROM products WHERE price < 10 OR price > 100
 	
 DESAFIO 2605:
-	SELECT prod.name, 
-		prov.name
-		FROM products prod
-		LEFT JOIN providers prov ON (prod.id_providers = prov.id)
-		WHERE prod.id_categories = '6'
-		
+SELECT prod.name, 
+prov.name
+FROM products prod
+LEFT JOIN providers prov ON (prod.id_providers = prov.id)
+WHERE prod.id_categories = '6'
+	
 		
 DESAFIO 2606:
-	SELECT 
-	prod.id, 
-	prod.name 
-	FROM products prod
-	LEFT JOIN categories cat ON ( cat.id = prod.id_categories )  
-	WHERE cat.name LIKE 'super%'
+SELECT 
+prod.id, 
+prod.name 
+FROM products prod
+LEFT JOIN categories cat ON ( cat.id = prod.id_categories )  
+WHERE cat.name LIKE 'super%'
 	
 	
 DESAFIO 2607:
-	SELECT DISTINCT city FROM providers ORDER BY city
-	
+SELECT DISTINCT city FROM providers ORDER BY city
+
 	
 DESAFIO 2608:
-	SELECT 
-		MAX(price) "price",
-		MIN(price) "price"
-	FROM products;
+SELECT 
+MAX(price) "price",
+MIN(price) "price"
+FROM products;
 	
 	
 DESAFIO 2609:
-	SELECT 
-	cat.name,
-	SUM (prod.amount)
-	FROM categories cat 
-	LEFT JOIN products prod ON (cat.id = prod.id_categories)
-	GROUP BY 1,
+SELECT 
+cat.name,
+SUM (prod.amount)
+FROM categories cat 
+LEFT JOIN products prod ON (cat.id = prod.id_categories)
+GROUP BY 1,
 	
 	
 DESAFIO 2610:	
-	SELECT ROUND(AVG(PRICE),2) FROM PRODUCTS
+SELECT ROUND(AVG(PRICE),2) FROM PRODUCTS
 	
 	
 DESAFIO 2611:	
-	SELECT
-    mov.id, 
-    mov.name
-	FROM movies mov
-	LEFT JOIN genres gen ON (mov.id_genres = gen.id)
-	WHERE gen.description = 'Action'
+SELECT
+mov.id, 
+mov.name
+FROM movies mov
+LEFT JOIN genres gen ON (mov.id_genres = gen.id)
+WHERE gen.description = 'Action'
 	
 	
 DESAFIO 2612:	
-	SELECT 
-	mov.id,
-	mov.name
-	FROM movies mov
-	LEFT JOIN prices pr ON (mov.id_prices = pr.id)
-	WHERE pr.value < '2.00'
+SELECT 
+mov.id,
+mov.name
+FROM movies mov
+LEFT JOIN prices pr ON (mov.id_prices = pr.id)
+WHERE pr.value < '2.00'
 	
 	
 DESAFIO 2613:	
-	SELECT 
-	cust.name,
-	ren.rentals_date
-	FROM customers cust
-	LEFT JOIN rentals ren ON (cust.id = ren.id_customers)
-	WHERE ren.rentals_date between '2016-09-01' and '2016-09-30'
+SELECT 
+cust.name,
+ren.rentals_date
+FROM customers cust
+LEFT JOIN rentals ren ON (cust.id = ren.id_customers)
+WHERE ren.rentals_date between '2016-09-01' and '2016-09-30'
 	
 
 DESAFIO 2614:	
-	SELECT 
-	DISTINCT city
-	FROM 
-	customers
+SELECT 
+DISTINCT city
+FROM 
+customers
 	
 
 DESAFIO 2615:
-	SELECT 
-	DISTINCT city
-	FROM 
-	customers
+SELECT 
+DISTINCT city
+FROM 
+customers
 	
 
 DESAFIO 2616:	
-	SELECT 
-	cust.id,
-	cust.name
-	FROM 
-	customers cust
-	LEFT JOIN locations loc ON ( cust.id = loc.id_customers)
-	WHERE NOT EXISTS(SELECT cust.id FROM locations loc WHERE cust.id = loc.id_customers )
-	ORDER BY ID
+SELECT 
+cust.id,
+cust.name
+FROM 
+customers cust
+LEFT JOIN locations loc ON ( cust.id = loc.id_customers)
+WHERE NOT EXISTS(SELECT cust.id FROM locations loc WHERE cust.id = loc.id_customers )
+ORDER BY ID
 	
 	
 DESAFIO 2617:	
-	SELECT 
-    prod.name,
-    prov.name
-	FROM 
-	providers prov
-	LEFT JOIN products prod ON (prov.id = prod.id_providers)
-	WHERE prov.name = 'Ajax SA'
+SELECT 
+prod.name,
+prov.name
+FROM 
+providers prov
+LEFT JOIN products prod ON (prov.id = prod.id_providers)
+WHERE prov.name = 'Ajax SA'
 	
 	
 DESAFIO 2618:		
-	SELECT 
-	prod.name,
-	prov.name,
-	cat.name
-	FROM
-	products prod
-	LEFT JOIN providers prov ON (prod.id_providers = prov.id)
-	LEFT JOIN categories cat ON (prod.id_categories = cat.id)
-	WHERE prov.name = 'Sansul SA'
-	AND cat.name = 'Imported'
+SELECT 
+prod.name,
+prov.name,
+cat.name
+FROM
+products prod
+LEFT JOIN providers prov ON (prod.id_providers = prov.id)
+LEFT JOIN categories cat ON (prod.id_categories = cat.id)
+WHERE prov.name = 'Sansul SA'
+AND cat.name = 'Imported'
 	
 
 DESAFIO 2619:	
-	SELECT 
-	PROD.name,
-	PROV.name,
-	PROD.price
-	FROM products PROD
-	LEFT JOIN providers PROV ON (PROD.id_providers = PROV.id)
-	LEFT JOIN categories CAT ON (PROD.id_categories = CAT.id)
-	WHERE PROD.price > 1000
-	AND CAT.name = 'Super Luxury'
+SELECT 
+PROD.name,
+PROV.name,
+PROD.price
+FROM products PROD
+LEFT JOIN providers PROV ON (PROD.id_providers = PROV.id)
+LEFT JOIN categories CAT ON (PROD.id_categories = CAT.id)
+WHERE PROD.price > 1000
+AND CAT.name = 'Super Luxury'
 	
 
 DESAFIO 2620:	
-	SELECT
-	CUST.name,
-	ORD.id
-	FROM orders ORD
-	LEFT JOIN customers CUST ON (ORD.id_customers = CUST.id)
-	WHERE ORD.orders_date BETWEEN '2016-01-01' AND  '2016-06-30'
+SELECT
+CUST.name,
+ORD.id
+FROM orders ORD
+LEFT JOIN customers CUST ON (ORD.id_customers = CUST.id)
+WHERE ORD.orders_date BETWEEN '2016-01-01' AND  '2016-06-30'
 	
 DESAFIO 2621:
-	SELECT
-	PROD.name
-	FROM products PROD
-	LEFT JOIN providers PROV ON (PROD.id_providers = PROV.id)
-	WHERE PROD.amount BETWEEN 10 AND 20
-	AND PROV.name LIKE 'P%'	
+SELECT
+PROD.name
+FROM products PROD
+LEFT JOIN providers PROV ON (PROD.id_providers = PROV.id)
+WHERE PROD.amount BETWEEN 10 AND 20
+AND PROV.name LIKE 'P%'	
 	
 DESAFIO 2622:	
-	SELECT
-	CUST.NAME 
-	FROM CUSTOMERS CUST 
-	LEFT JOIN LEGAL_PERSON LEG ON (CUST.ID = LEG.ID_CUSTOMERS) 
-	WHERE LEG.ID_CUSTOMERS = CUST.ID
+SELECT
+CUST.NAME 
+FROM CUSTOMERS CUST 
+LEFT JOIN LEGAL_PERSON LEG ON (CUST.ID = LEG.ID_CUSTOMERS) 
+WHERE LEG.ID_CUSTOMERS = CUST.ID
 	
-	---FORMA SIMPLIFICADA---
-	SELECT C.NAME FROM CUSTOMERS C, LEGAL_PERSON LP 
-	WHERE LP.ID_CUSTOMERS = C.ID
+---FORMA SIMPLIFICADA---
+SELECT C.NAME FROM CUSTOMERS C, LEGAL_PERSON LP 
+WHERE LP.ID_CUSTOMERS = C.ID
 	
 	
 DESAFIO 2623: ---ESTUDAR UMA FORMA MAIS SIMPLIFICADA----
-	SELECT 
-	PROD.NAME,
-	CAT.NAME
-	FROM PRODUCTS PROD
-	LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
-	WHERE PROD.AMOUNT > 100 AND CAT.ID = 1 
+SELECT 
+PROD.NAME,
+CAT.NAME
+FROM PRODUCTS PROD
+LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
+WHERE PROD.AMOUNT > 100 AND CAT.ID = 1 
 	
-	UNION
+UNION 
 
-	SELECT 
-	PROD.NAME,
-	CAT.NAME
-	FROM PRODUCTS PROD
-	LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
-	WHERE PROD.AMOUNT > 100 AND CAT.ID = 2 
+SELECT 
+PROD.NAME,
+CAT.NAME
+FROM PRODUCTS PROD
+LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
+WHERE PROD.AMOUNT > 100 AND CAT.ID = 2 
 
-	UNION
+UNION
 
-	SELECT 
-	PROD.NAME,
-	CAT.NAME
-	FROM PRODUCTS PROD
-	LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
-	WHERE PROD.AMOUNT > 100 AND CAT.ID = 3 
+SELECT 
+PROD.NAME,
+CAT.NAME
+FROM PRODUCTS PROD
+LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
+WHERE PROD.AMOUNT > 100 AND CAT.ID = 3 
 
-	UNION 
+UNION 
 
-	SELECT 
-	PROD.NAME,
-	CAT.NAME
-	FROM PRODUCTS PROD
-	LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
-	WHERE PROD.AMOUNT > 100 AND CAT.ID = 6 
+SELECT 
+PROD.NAME,
+CAT.NAME
+FROM PRODUCTS PROD
+LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
+WHERE PROD.AMOUNT > 100 AND CAT.ID = 6 
 
-	UNION ALL
+UNION ALL
 
-	SELECT 
-	PROD.NAME,
-	CAT.NAME
-	FROM PRODUCTS PROD
-	LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
-	WHERE PROD.AMOUNT > 100 AND CAT.ID = 9 
+SELECT 
+PROD.NAME,
+CAT.NAME
+FROM PRODUCTS PROD
+LEFT JOIN CATEGORIES CAT ON (PROD.ID_CATEGORIES = CAT.ID)
+WHERE PROD.AMOUNT > 100 AND CAT.ID = 9 
+
+
+DESAFIO 2624:
+SELECT COUNT (DISTINCT CITY) FROM customers
+	
+
+DESAFIO 2625:
+SELECT (SUBSTRING(cpf from 1 for 3)|| '.' ||
+SUBSTRING(cpf from 4 for 3)|| '.' ||
+SUBSTRING(cpf from 7 for 3)|| '-' ||
+SUBSTRING(cpf from 10 for 2))
+FROM natural_person
+	
+	
+DESAFIO 2737:
+
+--Versão Firebird
+SELECT
+name,
+(SELECT max(customers_number)AS customers_number from lawyers) AS customers_number
+FROM lawyers
+WHERE customers_number = (select MAX(customers_number) from lawyers)
+
+UNION
+
+SELECT
+name,
+(SELECT MIN(customers_number) AS customers_number from lawyers)
+FROM lawyers
+WHERE customers_number = (select MIN(customers_number) from lawyers )
+
+UNION ALL
+SELECT DISTINCT
+'Average',
+(SELECT AVG(customers_number) FROM lawyers)
+FROM lawyers
+WHERE customers_number = (select MIN(customers_number) from lawyers)   --Esse problema o Site não aceita no formato firebird
+
+
+--Versão MySQL
+(
+SELECT name, customers_number
+FROM lawyers
+ORDER BY customers_number DESC
+LIMIT 1
+)
+
+UNION ALL
+
+(
+SELECT name, customers_number
+FROM lawyers
+ORDER BY customers_number ASC
+LIMIT 1
+)
+
+UNION ALL
+
+(
+SELECT 'Average', round(AVG(customers_number), 0)
+FROM lawyers
+)
+
+DESAFIO 2738:
+
+SELECT 
+CAND.name,
+CAST(ROUND((((SC.math*2)+(SC.specific*3)+(SC.project_plan*5))/10),2 )AS DECIMAL (9,2)) AS AVG_
+FROM candidate CAND
+LEFT JOIN score SC ON (CAND.id = SC.candidate_id)
+ORDER BY AVG_ DESC
+
+
+DESAFIO 2739:
+SELECT
+name,
+CAST(EXTRACT (Day From payday) AS INTEGER) 
+FROM loan
+
+
+DESAFIO 2740:
+
+--FIREBIRD (SITE NÃO ACEITA ESSE EXERCICIO NO FORMATO FIREBIRD)
+SELECT FIRST 3
+'Podium: ' || team as name 
+FROM league
+
+UNION ALL
+
+SELECT	first 2 skip 13 
+'Demoted: ' || team as name 
+FROM league
+
+
+--MySQL
+SELECT CONCAT('Podium: ', team) "name"
+FROM league
+WHERE position <= 3
+UNION ALL
+SELECT CONCAT('Demoted: ', team)
+FROM league, (SELECT position FROM league ORDER BY position DESC LIMIT 2) tmp
+WHERE tmp.position = league.position
+
+
+DESAFIO 2741:
+
+--FIREBIRD (SITE NÃO ACEITA ESSE EXERCICIO NO FORMATO FIREBIRD)
+SELECT 'Approved: ' || name AS nome,
+grade
+FROM students
+WHERE grade >= 7
+ORDER BY grade DESC
+
+
+--MySQL
+SELECT CONCAT('Approved: ', name) "name",
+grade
+FROM students
+WHERE grade >= 7
+ORDER BY grade DESC
